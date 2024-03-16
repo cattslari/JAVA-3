@@ -520,18 +520,21 @@ public class Main extends javax.swing.JFrame {
        
        VetDAO cd = new VetDAO(con);
        
-       cb.setPlaca(nome.getText());
-       cb.setCor(txtCor.getText());
-       cb.setDescricao(txtDescricao.getText());
-       cb.setModelo(vacinado.getText());
-       cb.setMarca(txtMarca.getText());
-       cb.setConversivel(txtConversivel.getText());
-       cb.setJanelas(responsavel.getText());
-       cb.setPortas(txtPortas.getText());
-       cb.setRodas(txtRodas.getText());
-       cb.setTracao(txt4x4.getText());
-       cb.setPorte(txtPorte.getText());
-       cb.setBlindado(txtBlindado.getText());
+       
+       cb.setNome(nome.getText());
+       cb.setIdade(idade.getText());
+       cb.setRaca(raca.getText());
+       cb.setPorte(porte.getText());
+       cb.setNasc(nasc.getText());
+       cb.setVacinado(vacinado.getText());
+       cb.setResponsavel(responsavel.getText());
+       cb.setTelefone(telefone.getText());
+       cb.setTelefone(telefone.getText());
+       cb.setCpf(cpf.getText());
+       cb.setEndereco(endereco.getText());
+       cb.setBairro(bairro.getText());
+       cb.setNumero(numero.getText());
+       cb.setSintomas(sintomas.getText());
        
        lblMensagem.setText(cd.inserir(cb));
        Conexao.fecharConexao(con);
@@ -546,9 +549,7 @@ public class Main extends javax.swing.JFrame {
         
         VetDAO cd = new VetDAO(con);
         
-        List<VetBean> listaCarro = new ArrayList<VetBean>();
-        
-        listaCarro = cd.listarTodos();
+        cd.listarTodos();
         
         DefaultTableModel tbm = (DefaultTableModel)tblConsulta.getModel();
         
@@ -557,21 +558,24 @@ public class Main extends javax.swing.JFrame {
         }
         
         int i = 0;
+        List<VetBean> listaPet = new ArrayList<>();
         
-        for(VetBean cb : listaCarro){
+        for(VetBean cb : listaPet){
             tbm.addRow(new String[1]);
-            tblConsulta.setValueAt(cb.getPlaca(), i, 0);
-            tblConsulta.setValueAt(cb.getCor(), i, 1);
-            tblConsulta.setValueAt(cb.getDescricao(), i, 2);
-            tblConsulta.setValueAt(cb.getModelo(), i, 3);
-            tblConsulta.setValueAt(cb.getMarca(), i, 4);
-            tblConsulta.setValueAt(cb.getConversivel(), i, 5);
-            tblConsulta.setValueAt(cb.getJanelas(), i, 6);
-            tblConsulta.setValueAt(cb.getPortas(), i, 7);
-            tblConsulta.setValueAt(cb.getRodas(), i, 8);
-            tblConsulta.setValueAt(cb.getTracao(), i, 9);
-            tblConsulta.setValueAt(cb.getPorte(), i, 10);
-            tblConsulta.setValueAt(cb.getBlindado(), i, 11);
+            tblConsulta.setValueAt(cb.getId(), i, 0);
+            tblConsulta.setValueAt(cb.getNome(), i, 1);
+            tblConsulta.setValueAt(cb.getIdade(), i, 2);
+            tblConsulta.setValueAt(cb.getRaca(), i, 3);
+            tblConsulta.setValueAt(cb.getPorte(), i, 4);
+            tblConsulta.setValueAt(cb.getNasc(), i, 5);
+            tblConsulta.setValueAt(cb.getVacinado(), i, 6);
+            tblConsulta.setValueAt(cb.getResponsavel(), i, 7);
+            tblConsulta.setValueAt(cb.getTelefone(), i, 8);
+            tblConsulta.setValueAt(cb.getCpf(), i, 9);
+            tblConsulta.setValueAt(cb.getEndereco(), i, 10);
+            tblConsulta.setValueAt(cb.getBairro(), i, 11);
+            tblConsulta.setValueAt(cb.getNumero(), i, 12);
+            tblConsulta.setValueAt(cb.getSintomas(), i, 13);
             i++;
         }
         Conexao.fecharConexao(con);
@@ -580,31 +584,35 @@ public class Main extends javax.swing.JFrame {
     private void tblConsultaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblConsultaMouseClicked
         Integer linha = tblConsulta.getSelectedRow();
         
-        String placa = (String)tblConsulta.getValueAt(linha, 0);
-        String cor = (String)tblConsulta.getValueAt(linha, 1);
-        String descricao = (String)tblConsulta.getValueAt(linha, 2);
-        String modelo = (String)tblConsulta.getValueAt(linha, 3);
-        String marca = (String)tblConsulta.getValueAt(linha, 4);
-        String conversivel = (String)tblConsulta.getValueAt(linha, 5);
-        String janelas = (String)tblConsulta.getValueAt(linha, 6);
-        String portas = (String)tblConsulta.getValueAt(linha, 7);
-        String rodas = (String)tblConsulta.getValueAt(linha, 8);
-        String tracao = (String)tblConsulta.getValueAt(linha, 9);
-        String porte = (String)tblConsulta.getValueAt(linha, 10);
-        String blindado = (String)tblConsulta.getValueAt(linha, 11);
+        var txtid = (String)tblConsulta.getValueAt(linha, 0);
+        var txtnome = (String)tblConsulta.getValueAt(linha, 1);
+        var txtidade = (String)tblConsulta.getValueAt(linha, 2);
+        var txtraca = (String)tblConsulta.getValueAt(linha, 3);
+        var txtporte = (String)tblConsulta.getValueAt(linha, 4);
+        var txtnasc = (String)tblConsulta.getValueAt(linha, 5);
+        var txtvacinado = (String)tblConsulta.getValueAt(linha, 6);
+        var txtresponsavel = (String)tblConsulta.getValueAt(linha, 7);
+        var txttelefone = (String)tblConsulta.getValueAt(linha, 8);
+        var txtcpf = (String)tblConsulta.getValueAt(linha, 9);
+        var txtendereco = (String)tblConsulta.getValueAt(linha, 10);
+        var txtbairro = (String)tblConsulta.getValueAt(linha, 11);
+        var txtnumero = (String)tblConsulta.getValueAt(linha, 12);
+        var txtsintomas = (String)tblConsulta.getValueAt(linha, 13);
         
-        nome.setText(placa);
-        txtCor.setText(cor);
-        txtDescricao.setText(descricao);
-        porte.setText(modelo);
-        txtMarca.setText(marca);
-        txtConversivel.setText(conversivel);
-        responsavel.setText(janelas);
-        txtPortas.setText(portas);
-        txtRodas.setText(rodas);
-        txt4x4.setText(tracao);
-        txtPorte.setText(porte);
-        txtBlindado.setText(blindado);
+        id.setText(txtid);
+        nome.setText(txtnome);
+        idade.setText(txtidade);
+        raca.setText(txtraca);
+        porte.setText(txtporte);
+        nasc.setText(txtnasc);
+        vacinado.setText(txtvacinado);
+        responsavel.setText(txtresponsavel);
+        telefone.setText(txttelefone);
+        cpf.setText(txtcpf);
+        endereco.setText(txtendereco);
+        bairro.setText(txtbairro);
+        numero.setText(txtnumero);
+        sintomas.setText(txtsintomas);
     }//GEN-LAST:event_tblConsultaMouseClicked
 
     private void btnAlterarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAlterarMouseClicked
@@ -612,18 +620,19 @@ public class Main extends javax.swing.JFrame {
         VetBean cb = new VetBean();
         VetDAO cd = new VetDAO(con);
         
-        cb.setPlaca(nome.getText());
-        cb.setCor(txtCor.getText());
-        cb.setDescricao(txtDescricao.getText());
-        cb.setModelo(vacinado.getText());
-        cb.setMarca(txtMarca.getText());
-        cb.setConversivel(txtConversivel.getText());
-        cb.setJanelas(responsavel.getText());
-        cb.setPortas(txtPortas.getText());
-        cb.setRodas(txtRodas.getText());
-        cb.setTracao(txt4x4.getText());
-        cb.setPorte(txtPorte.getText());
-        cb.setBlindado(txtBlindado.getText());
+        cb.setNome(nome.getText());
+        cb.setIdade(idade.getText());
+        cb.setRaca(raca.getText());
+        cb.setPorte(porte.getText());
+        cb.setNasc(nasc.getText());
+        cb.setVacinado(vacinado.getText());
+        cb.setResponsavel(responsavel.getText());
+        cb.setTelefone(telefone.getText());
+        cb.setCpf(cpf.getText());
+        cb.setEndereco(endereco.getText());
+        cb.setBairro(bairro.getText());
+        cb.setNumero(numero.getText());
+        cb.setSintomas(sintomas.getText());
         lblMensagem.setText(cd.alterar(cb));
         
         Conexao.fecharConexao(con);
@@ -634,10 +643,10 @@ public class Main extends javax.swing.JFrame {
         VetBean cb = new VetBean();
         VetDAO cd = new VetDAO(con);
         
-        cb.setPlaca(nome.getText());
+        cb.setNome(nome.getText());
         Object[] opcoes = { "Sim", "Não" };
         
-        int i = JOptionPane.showOptionDialog(null, "Deseja excluir esse veículo: " +nome.getText()+ "?", "Exclusão", JOptionPane.YES_NO_OPTION,  JOptionPane.QUESTION_MESSAGE, null, opcoes, opcoes[0]);
+        int i = JOptionPane.showOptionDialog(null, "Deseja excluir esse cadastro: " +nome.getText()+ "?", "Exclusão", JOptionPane.YES_NO_OPTION,  JOptionPane.QUESTION_MESSAGE, null, opcoes, opcoes[0]);
         
         if (i == JOptionPane.YES_OPTION) {
             lblMensagem.setText(cd.excluir(cb));

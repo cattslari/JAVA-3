@@ -8,28 +8,25 @@ import java.sql.*;
 import java.util.*;
 
 public class Teste {
-//public static void main(String[] args) {
-    //    Connection con = Conexao.abrirConexao();
+public static void main(String[] args) {
+        Connection con = Conexao.abrirConexao();
 
-        //CarroBean cb = new CarroBean();
-        //CarroDAO cd = new CarroDAO(con);
+        VetBean cb = new VetBean();
+        VetDAO cd = new VetDAO(con);
         
-        //cb.setPlaca("AAA1234");
-        //cb.setCor("Laranja");
-        //cb.setDescricao("Carro 4");
-        //System.out.println(cd.inserir(cb));
+        cb.setNome("AAA1234");
+        System.out.println(cd.inserir(cb));
 
-        //List<CarroBean> lista = cd.listarTodos();
+        List<VetBean> lista = cd.listarTodos();
 
-        //if (lista != null) {
-            //for (CarroBean carro : lista) {
-                //System.out.println("Placa: " + carro.getPlaca());
-                //System.out.println("Cor: " + carro.getCor());
-                //System.out.println("Descrição: " + carro.getDescricao());
-            //}
-        //}
+        if (lista != null) {
+            for (VetBean cachorro : lista) {
+                System.out.println("Placa: " + cachorro.getNome());
+                
+            }
+        }
         
-        //Conexao.fecharConexao(con);
-    //}
+        Conexao.fecharConexao(con);
+    }
     
 }

@@ -9,6 +9,7 @@ package psv;
  * @author CAMARGO
  */
 public class VetBean {
+    private String id;
     private String nome;
     private String idade;
     private String raca;
@@ -205,5 +206,11 @@ public class VetBean {
         this.sintomas = sintomas;
     }
     
+    public String getId() {
+        return id;
+    }
     
+    public void setId(String id) {
+        this.id = id;
+    }
 }

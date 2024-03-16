@@ -28,19 +28,20 @@ public class VetDAO {
 
         try {
             PreparedStatement ps = getCon().prepareStatement(sql);
-            ps.setString(1, vet.getNome());
-            ps.setString(2, vet.getIdade());
-            ps.setString(3, vet.getRaca());
-            ps.setString(4, vet.getPorte());
-            ps.setString(5, vet.getNasc());
-            ps.setString(6, vet.getVacinado());
-            ps.setString(7, vet.getResponsavel());
-            ps.setString(8, vet.getTelefone());
-            ps.setString(9, vet.getCpf());
-            ps.setString(10,vet.getEndereco());
-            ps.setString(11,vet.getBairro());
-            ps.setString(12,vet.getNumero());
-            ps.setString(13,vet.getSintomas());
+            ps.setString(1, vet.getId());
+            ps.setString(2, vet.getNome());
+            ps.setString(3, vet.getIdade());
+            ps.setString(4, vet.getRaca());
+            ps.setString(5, vet.getPorte());
+            ps.setString(6, vet.getNasc());
+            ps.setString(7, vet.getVacinado());
+            ps.setString(8, vet.getResponsavel());
+            ps.setString(9, vet.getTelefone());
+            ps.setString(10, vet.getCpf());
+            ps.setString(11,vet.getEndereco());
+            ps.setString(12,vet.getBairro());
+            ps.setString(13,vet.getNumero());
+            ps.setString(14,vet.getSintomas());
             
             if(ps.executeUpdate() > 0){
                 return "Inserido com sucesso.";
@@ -59,19 +60,20 @@ public class VetDAO {
         try {
             PreparedStatement ps = getCon().prepareStatement(sql);
             
-            ps.setString(1, vet.getIdade());
-            ps.setString(2, vet.getRaca());
-            ps.setString(3, vet.getPorte());
-            ps.setString(4, vet.getNasc());
-            ps.setString(5, vet.getVacinado());
-            ps.setString(6, vet.getResponsavel());
-            ps.setString(7, vet.getTelefone());
-            ps.setString(8, vet.getCpf());
-            ps.setString(9, vet.getEndereco());
-            ps.setString(10, vet.getBairro());
-            ps.setString(11, vet.getNumero());
-            ps.setString(12, vet.getSintomas());
-            ps.setString(13, vet.getNome());
+            ps.setString(1, vet.getId());
+            ps.setString(2, vet.getIdade());
+            ps.setString(3, vet.getRaca());
+            ps.setString(4, vet.getPorte());
+            ps.setString(5, vet.getNasc());
+            ps.setString(6, vet.getVacinado());
+            ps.setString(7, vet.getResponsavel());
+            ps.setString(8, vet.getTelefone());
+            ps.setString(9, vet.getCpf());
+            ps.setString(10, vet.getEndereco());
+            ps.setString(11, vet.getBairro());
+            ps.setString(12, vet.getNumero());
+            ps.setString(13, vet.getSintomas());
+            ps.setString(14, vet.getNome());
         if(ps.executeUpdate() > 0){
                 return "Alterado com sucesso.";
             } else {
@@ -101,7 +103,7 @@ public class VetDAO {
     public List<VetBean> listarTodos(){
         String sql = "select * from vet";
         
-        List<VetBean> listaVet = new ArrayList<VetBean>();
+        List<VetBean> listaPet = new ArrayList<>();
         
         try {
             PreparedStatement ps = getCon().prepareStatement(sql);
@@ -111,22 +113,23 @@ public class VetDAO {
             if(rs != null) {
                 while(rs.next()){
                     VetBean cb = new VetBean();
-                    cb.set.Nome(rs.getString(1));
-                    cb.set.Idade(rs.getString(2));
-                    cb.set.Raca(rs.getString(3));
-                    cb.set.Porte(rs.getString(4));
-                    cb.set.Nasc(rs.getString(5));
-                    cb.set.Vacinado(rs.getString(6));
-                    cb.set.Responsavel(rs.getString(7);
-                    cb.set.Telefone(rs.getString(8));
-                    cb.set.Cpf(rs.getString(9));
-                    cb.set.Endereco(rs.getString(10));
-                    cb.set.Bairro(rs.getString(11));
-                    cb.set.Numero(rs.getString(12));
-                    cb.set.Sintomas(rs.getString(13));
-                    listaVet.add(cb);
+                    cb.setId(rs.getString(1));
+                    cb.setNome(rs.getString(2));
+                    cb.setIdade(rs.getString(3));
+                    cb.setRaca(rs.getString(4));
+                    cb.setPorte(rs.getString(5));
+                    cb.setNasc(rs.getString(6));
+                    cb.setVacinado(rs.getString(7));
+                    cb.setResponsavel(rs.getString(8));
+                    cb.setTelefone(rs.getString(9));
+                    cb.setCpf(rs.getString(10));
+                    cb.setEndereco(rs.getString(11));
+                    cb.setBairro(rs.getString(12));
+                    cb.setNumero(rs.getString(13));
+                    cb.setSintomas(rs.getString(14));
+                    listaPet.add(cb);
                 }
-                    return listaVet;
+                    return listaPet;
             } else {
                 return null;
             }
